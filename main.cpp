@@ -4,6 +4,7 @@
 #include <string>
 #include "quick_sort.h"
 #include "merge_sort.h"
+#include "radix_counting_sort.h"
 
 int main() {
     std::vector<std::string> test = {
@@ -17,27 +18,32 @@ int main() {
             "vmnc,nvx,sfsdffdfdff"
     };
 
-    Strategy quicksort = Strategy([](std::vector<std::string> test) {
+    Strategy quick_sort = Strategy([](std::vector<std::string> test) {
         std::sort(test.begin(), test.end(), Compare);
     });
 
-    Strategy mergesort = Strategy([](std::vector<std::string> test) {
+    Strategy merge_sort = Strategy([](std::vector<std::string> test) {
         std::stable_sort(test.begin(), test.end(), Compare);
     });
 
-    Strategy string_quicksort = Strategy([](std::vector<std::string> test) {
+    Strategy string_quick_sort = Strategy([](std::vector<std::string> test) {
         StringQuickSort(std::move(test));
     });
 
-    Strategy string_mergesort = Strategy([](std::vector<std::string> test) {
+    Strategy string_merge_sort = Strategy([](std::vector<std::string> test) {
         StringMergeSort(std::move(test));
     });
 
+    Strategy radix_counting_sort = Strategy([](std::vector<std::string> test) {
+        RadixCountingSort(test, 0, test.size(), 0);
+    });
+
     std::vector<Strategy> algorithm_strategies = {
-            quicksort,
-            mergesort,
-            string_quicksort,
-            string_mergesort
+            quick_sort,
+            merge_sort,
+            string_quick_sort,
+            string_merge_sort,
+            radix_counting_sort
     };
 
     for (const Strategy &strategy: algorithm_strategies) {

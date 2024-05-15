@@ -2,8 +2,8 @@
 #include <utility>
 #include <vector>
 #include <string>
-#include "quick_sort.cpp"
-#include "merge_sort.cpp"
+#include "quick_sort.h"
+#include "merge_sort.h"
 
 int main() {
     std::vector<std::string> test = {
@@ -26,17 +26,18 @@ int main() {
     });
 
     Strategy string_quicksort = Strategy([](std::vector<std::string> test) {
-        TernaryQuickSort(std::move(test));
+        StringQuickSort(std::move(test));
     });
 
     Strategy string_mergesort = Strategy([](std::vector<std::string> test) {
-
+        StringMergeSort(std::move(test));
     });
 
     std::vector<Strategy> algorithm_strategies = {
             quicksort,
             mergesort,
-            string_quicksort
+            string_quicksort,
+            string_mergesort
     };
 
     for (const Strategy &strategy: algorithm_strategies) {

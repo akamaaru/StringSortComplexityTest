@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 #include <algorithm>
-#include "utils.cpp"
+#include "utils.h"
 
 std::string MedianOfThree(
         const std::string &a,
@@ -63,7 +63,7 @@ std::string ChoosePivot(const std::vector<std::string> &R) {
     return pivot;
 }
 
-std::vector<std::string> TernaryQuickSort(std::vector<std::string> R, int L = 0) {
+std::vector<std::string> StringQuickSort(std::vector<std::string> R, int L = 0) {
     if (R.size() <= 1) {
         return R;
     }
@@ -92,9 +92,9 @@ std::vector<std::string> TernaryQuickSort(std::vector<std::string> R, int L = 0)
         }
     }
 
-    R_less = TernaryQuickSort(R_less, L);
-    R_equal = TernaryQuickSort(R_equal, L + 1);
-    R_great = TernaryQuickSort(R_great, L);
+    R_less = StringQuickSort(R_less, L);
+    R_equal = StringQuickSort(R_equal, L + 1);
+    R_great = StringQuickSort(R_great, L);
 
     for (std::vector<std::string> vector: {R_less, R_equal, R_great}) {
         R_excl.insert(R_excl.end(), vector.begin(), vector.end());

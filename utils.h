@@ -9,6 +9,7 @@
 #include <string>
 
 static const int MIN_SIZE_FOR_MEDIAN_PIVOT = 50;
+const int ALPHABET_POWER = 123;
 
 class Strategy {
 public:

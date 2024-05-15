@@ -5,6 +5,7 @@
 #include "quick_sort.h"
 #include "merge_sort.h"
 #include "radix_counting_sort.h"
+#include "radix_quick_sort.h"
 
 int main() {
     std::vector<std::string> test = {
@@ -38,12 +39,17 @@ int main() {
         RadixCountingSort(test, 0, test.size(), 0);
     });
 
+    Strategy radix_quick_sort = Strategy([](std::vector<std::string> test) {
+        RadixQuickSort(std::move(test));
+    });
+
     std::vector<Strategy> algorithm_strategies = {
             quick_sort,
             merge_sort,
             string_quick_sort,
             string_merge_sort,
-            radix_counting_sort
+            radix_counting_sort,
+            radix_quick_sort
     };
 
     for (const Strategy &strategy: algorithm_strategies) {

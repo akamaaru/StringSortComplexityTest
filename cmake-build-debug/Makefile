@@ -224,6 +224,30 @@ radix_counting_sort.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\string_sort.dir\build.make CMakeFiles/string_sort.dir/radix_counting_sort.cpp.s
 .PHONY : radix_counting_sort.cpp.s
 
+radix_quick_sort.obj: radix_quick_sort.cpp.obj
+.PHONY : radix_quick_sort.obj
+
+# target to build an object file
+radix_quick_sort.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\string_sort.dir\build.make CMakeFiles/string_sort.dir/radix_quick_sort.cpp.obj
+.PHONY : radix_quick_sort.cpp.obj
+
+radix_quick_sort.i: radix_quick_sort.cpp.i
+.PHONY : radix_quick_sort.i
+
+# target to preprocess a source file
+radix_quick_sort.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\string_sort.dir\build.make CMakeFiles/string_sort.dir/radix_quick_sort.cpp.i
+.PHONY : radix_quick_sort.cpp.i
+
+radix_quick_sort.s: radix_quick_sort.cpp.s
+.PHONY : radix_quick_sort.s
+
+# target to generate assembly for a file
+radix_quick_sort.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\string_sort.dir\build.make CMakeFiles/string_sort.dir/radix_quick_sort.cpp.s
+.PHONY : radix_quick_sort.cpp.s
+
 utils.obj: utils.cpp.obj
 .PHONY : utils.obj
 
@@ -269,6 +293,9 @@ help:
 	@echo ... radix_counting_sort.obj
 	@echo ... radix_counting_sort.i
 	@echo ... radix_counting_sort.s
+	@echo ... radix_quick_sort.obj
+	@echo ... radix_quick_sort.i
+	@echo ... radix_quick_sort.s
 	@echo ... utils.obj
 	@echo ... utils.i
 	@echo ... utils.s

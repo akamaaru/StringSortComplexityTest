@@ -1,18 +1,25 @@
-#include <iostream>
 #include <chrono>
-#include <iomanip>
 #include <utility>
 #include <vector>
 #include <string>
 #include "utils.h"
 
-Strategy::Strategy(std::function<void(std::vector<std::string> &)> algorithm) : algorithm(std::move(algorithm)) {
+Strategy::Strategy(
+        std::string name,
+        std::function<void(std::vector<std::string> &)> algorithm
+) : name(std::move(name)), algorithm(std::move(algorithm)) {
 }
 
 int Compare(
         const std::string &a,
         const std::string &b
 ) {
+    if (a.empty()) {
+        return -1;
+    } else if (b.empty()) {
+        return 1;
+    }
+
     const char *s1 = a.data();
     const char *s2 = b.data();
 
@@ -68,7 +75,7 @@ std::pair<int, int> LcpCompare(
     };
 }
 
-void TestAlgorithm(std::vector<std::string> input, const Strategy &strategy) {
+std::pair<size_t, double> TestAlgorithm(std::vector<std::string> input, const Strategy &strategy) {
     comparisons = 0;
 
     auto start = std::chrono::high_resolution_clock::now();
@@ -76,8 +83,5 @@ void TestAlgorithm(std::vector<std::string> input, const Strategy &strategy) {
     auto finish = std::chrono::high_resolution_clock::now();
     auto microseconds = std::chrono::duration_cast<std::chrono::microseconds>(finish - start);
 
-    std::cout << "Comparisons: " << comparisons << std::endl;
-    std::cout << "Time:        "
-              << std::setprecision(3) << std::fixed
-              << (double) microseconds.count() / 1000 << " ms" << std::endl;
+    return {comparisons, (double) microseconds.count() / 1000};
 }

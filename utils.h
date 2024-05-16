@@ -17,6 +17,7 @@ public:
     std::function<void(std::vector<std::string> &)> algorithm;
 
     explicit Strategy(
+            std::string name,
             std::function<void(std::vector<std::string> &)> algorithm
     );
 };
@@ -39,4 +40,4 @@ std::pair<int, int> LcpCompare(
         int k
 );
 
-void TestAlgorithm(std::vector<std::string> input, const Strategy &strategy);
+std::pair<size_t, double> TestAlgorithm(std::vector<std::string> input, const Strategy &strategy);

@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include <fstream>
+#include <filesystem>
 #include "quick_sort.h"
 #include "merge_sort.h"
 #include "radix_counting_sort.h"
@@ -22,7 +23,17 @@ std::vector<std::string> readCSV(const std::string &fileName) {
 }
 
 void writeCSV(const std::string &fileName, const std::vector<std::vector<double>>& data) {
-    std::ofstream stream(fileName);
+    std::filesystem::create_directory("result");
+
+    std::ofstream stream("result/" + fileName);
+
+    auto header = { "size",
+                    "data_random comparisons", "data_random time (ms)",
+                    "data_descending comparisons", "data_descending time (ms)",
+                    "data_almost_sorted comparisons", "data_almost_sorted time (ms)", };
+    for (auto number : header) {
+        stream << number << ",";
+    }
 
     for (const auto& row : data) {
         for (auto number : row) {

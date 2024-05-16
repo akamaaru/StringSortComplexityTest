@@ -35,6 +35,8 @@ void writeCSV(const std::string &fileName, const std::vector<std::vector<double>
         stream << number << ",";
     }
 
+    stream << std::endl;
+
     for (const auto& row : data) {
         for (auto number : row) {
             stream << number << ",";
